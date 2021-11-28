@@ -1,19 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import { NativeBaseProvider, extendTheme } from "native-base";
 
-const theme = extendTheme({
-  config: {
-    initialColorMode: "dark",
-  },
-});
+import { ConfigProvider } from "antd";
+import viVN from "antd/lib/locale/vi_VN";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <NativeBaseProvider theme={theme}>
-      <App />
-    </NativeBaseProvider>
-  </React.StrictMode>,
+  // <React.StrictMode>
+  <ConfigProvider locale={viVN}>
+    <App />
+  </ConfigProvider>,
+  // </React.StrictMode>,
   document.getElementById("root")
 );

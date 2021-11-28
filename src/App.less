@@ -1,0 +1,115 @@
+@import "~antd/dist/antd.less";
+
+@import "./Breakpoint.less";
+
+.horizontal-center {
+	display: flex;
+	justify-content: center;
+}
+
+.center {
+	text-align: center;
+}
+
+main {
+	margin: 30px 20% 30px 20%;
+	// padding: 0 10%;
+
+	// @media @wide-screen-down {
+	// 	font-size: 50px;
+	// }
+	@media @desktop-down {
+		margin-left: 13%;
+		margin-right: 13%;
+	}
+	@media @tablet-down {
+		margin-left: 7%;
+		margin-right: 7%;
+	}
+	@media @phone-down {
+		margin-left: 5px;
+		margin-right: 5px;
+	}
+}
+
+h1 {
+	font-size: 30px;
+}
+h2 {
+	font-size: 26px;
+}
+h3 {
+	font-size: 22px;
+}
+h4 {
+	font-size: 20px;
+}
+h5 {
+	font-size: 18px;
+}
+
+// Breadcrumb - General Layout
+.breadcrumb {
+	margin-bottom: 1%;
+}
+
+// Menu
+.logo {
+	display: inline-block;
+
+	&:hover::after, &:active::after {
+		border-bottom: none !important;
+	}
+
+	img {
+		width: 100%;
+	}
+
+	@media @tablet-down {
+		display: flex;
+		justify-content: center;
+
+		height: 70px !important;
+		span {
+			display: flex;
+			justify-content: center;
+		}
+		img {
+			width: 70px;
+		}
+	}
+}
+
+// BarsMenu
+.bars-menu {
+	margin-left: 10px;
+
+	display: none;
+	@media @tablet-down {
+		display: inline-block;
+	}
+}
+
+.bars-btn {
+	display: flex !important;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+// Drawer
+.ant-drawer-content-wrapper {
+	max-width: 100%;
+}
+
+// Menu
+.ant-layout-header {
+	padding: 0;
+}
+
+// Spin
+.spinner {
+	display: block;
+	text-align: center;
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
