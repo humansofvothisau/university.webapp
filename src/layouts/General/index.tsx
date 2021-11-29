@@ -8,6 +8,7 @@ import { Route, Switch, withRouter } from "react-router-dom";
 
 import GeneralMenu from "./Menu";
 import University from "../../components/University";
+import Home from "../../components/Home";
 
 const General: React.FC = () => {
   const [showDrawer, setShowDrawer] = useState(false);
@@ -40,7 +41,9 @@ const General: React.FC = () => {
 
       <Content>
         <Switch>
-          <Route exact path="/"></Route>
+          <Route exact path="/">
+            <Home />
+          </Route>
           <Route exact path="/university">
             <University />
           </Route>

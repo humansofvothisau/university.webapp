@@ -1,0 +1,36 @@
+@import "../../Breakpoint.less";
+
+.countdown-wrapper {
+  // Vertically center
+  position: absolute;
+  margin: auto;
+  height: 348px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  .countdown-item {
+    display: inline-block;
+  }
+  .countdown-item:not(:first-child) {
+    margin-left: 10px;
+  }
+  span {
+    font-size: 25px;
+  }
+  span.number {
+    font-size: 45px;
+  }
+  @media @tablet-down {
+    .countdown-item:not(:first-child) {
+      margin-left: 5px;
+    }
+    span {
+      font-size: 20px;
+    }
+    span.number {
+      font-size: 35px;
+    }
+  }
+}
