@@ -20,6 +20,7 @@ interface ConfigProps {
   APP_URL: string;
   API_URL: string;
   APP_NAME: string;
+  THPT_DATE: string;
 }
 
 export default {
@@ -30,4 +31,5 @@ export default {
     parseEnvString("REACT_APP_API_URL") ||
     "http://api.university.humansofvothisau.com/api",
   APP_NAME: parseEnvString("REACT_APP_NAME") || "HOV UniInfo",
+  THPT_DATE: parseEnvString("REACT_APP_THPT_DATE") || "",
 } as ConfigProps;
