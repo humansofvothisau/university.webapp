@@ -3,6 +3,7 @@ import uniConfig from "../config/university";
 import Benchmark from "../interfaces/Benchmark";
 import ThptData from "../interfaces/ThptData";
 import University from "../interfaces/University";
+import Quote from "../interfaces/Quote";
 
 const POST = {
   method: "POST",
@@ -72,6 +73,19 @@ const apiSettings = {
       }
       return response.json();
     });
+  },
+
+  fetchQuote: async (): Promise<Array<Quote>> => {
+    const endpoint: string = uniConfig.GET_QUOTE_URL;
+    var HttpReq = new XMLHttpRequest();
+    HttpReq.open(
+      "GET",
+      "https://humansofvothisau.com/university/quotes.json",
+      false
+    );
+    HttpReq.send(null);
+    console.log(HttpReq.responseText);
+    return JSON.parse(HttpReq.responseText);
   },
 };
 

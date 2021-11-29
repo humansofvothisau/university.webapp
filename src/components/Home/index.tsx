@@ -1,13 +1,18 @@
 import React from "react";
 import config from "../../config";
 import { useCountdown } from "../../hooks/useCountdown";
+import { useQuoteFetch } from "../../hooks/useQuoteFetch";
+import { ClockCircleFilled } from "@ant-design/icons";
 
 import "./index.less";
+import { Alert } from "antd";
 
 const Home: React.FC = () => {
-  const timeTillDate = "2022-07-07T07:30:00+0700";
+  const timeTillDate = "2022-07-07T07:30:00+0700"; // yyyy-MM-dd
+  const timeTillString = "07/07/2022";
 
   const { days, hours, minutes, seconds } = useCountdown(timeTillDate);
+  const { quote, error } = useQuoteFetch();
 
   return (
     <>
@@ -39,7 +44,23 @@ const Home: React.FC = () => {
                 <span className="number">{seconds}</span>
                 <span> giây</span>
               </div>
+              <div className="date">
+                <ClockCircleFilled /> Ngày thi dự kiến: {timeTillString}
+              </div>
             </>
+          )}
+          {error ? (
+            <span>{error}</span>
+          ) : (
+            <Alert
+              type="info"
+              message={quote.quote}
+              description={
+                <em>
+                  <span style={{ textAlign: "right" }}>{quote.author}</span>
+                </em>
+              }
+            />
           )}
         </div>
       </div>
