@@ -1,14 +1,11 @@
 import {
   BugFilled,
-  BulbFilled,
-  CoffeeOutlined,
   FacebookFilled,
   FireFilled,
   GithubFilled,
-  LinkedinFilled,
   MenuOutlined,
   ReadFilled,
-  SmileFilled,
+  InfoCircleFilled,
 } from "@ant-design/icons";
 import { Grid, Menu } from "antd";
 
@@ -53,9 +50,12 @@ const GeneralMenu: React.FC<Props & RouteComponentProps> = ({ inDrawer }) => {
       selectedKeys={[currentKey.slice(1)]}
     >
       <Menu.Item key="logo" className="logo">
-        <a href="https://humansofvothisau.com" target="_blank" rel="noreferrer">
+        {/* <a href="https://humansofvothisau.com" target="_blank" rel="noreferrer">
+          
+        </a> */}
+        <Link to="/">
           <img src={siteLogo} alt="ntranphongseBlog-logo" />
-        </a>
+        </Link>
       </Menu.Item>
 
       <Menu.Item key="university" icon={<ReadFilled />}>
@@ -85,6 +85,12 @@ const GeneralMenu: React.FC<Props & RouteComponentProps> = ({ inDrawer }) => {
           </a>
         </Menu.Item>
       </SubMenu>
+
+      <Menu.Item key="website" icon={<InfoCircleFilled />}>
+        <a href="https://humansofvothisau.com" target="_blank" rel="noreferrer">
+          Website
+        </a>
+      </Menu.Item>
     </Menu>
   );
 };
