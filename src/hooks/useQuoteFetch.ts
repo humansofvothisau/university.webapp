@@ -18,34 +18,16 @@ export const useQuoteFetch = () => {
         fetchQuotes = await api.fetchQuote();
       }
       setQuotes(fetchQuotes);
-      console.log(fetchQuotes);
+      var numQuote = getRandomInt(0, fetchQuotes.length);
+      setQuote(fetchQuotes[numQuote]);
     } catch (error: any) {
       setError(error.message);
-    }
-  };
-
-  const generateQuote = () => {
-    if (quotes.length > 0) {
-      var numQuote = getRandomInt(0, quotes.length);
-      setQuote(quotes[numQuote]);
     }
   };
 
   useEffect(() => {
     fetchQuotes();
   }, []);
-
-  useEffect(() => {
-    if (quotes.length > 0) {
-      const timer = setTimeout(() => {
-        generateQuote();
-      }, 1000);
-
-      return () => {
-        clearTimeout(timer);
-      };
-    }
-  }, [quotes]);
 
   useEffect(() => {
     if (quotes.length > 0) {
