@@ -25,12 +25,12 @@ export const useCountdown = (timeTillDate: string) => {
   };
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const timer = setInterval(() => {
       updateTime();
     }, 1000);
 
     return () => {
-      clearTimeout(timer);
+      clearInterval(timer);
     };
   });
 

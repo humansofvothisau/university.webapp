@@ -3,19 +3,21 @@ import Quote from "../../interfaces/Quote";
 import University from "../../interfaces/University";
 
 class hovUni extends Dexie {
-  universityList: Dexie.Table<University, number>;
-  quotesList: Dexie.Table<Quote, number>;
+  quotesList!: Dexie.Table<Quote, number>;
+  universityList!: Dexie.Table<University, number>;
 
   constructor() {
     super("hovUni");
     this.version(1).stores({
-      universityList: "++id,uniCode,uniName,url",
       quotesList: "++id,quote,author",
+      universityList: "++id,uniCode,uniName,url",
     });
 
-    this.universityList = this.table("universityList");
-    this.quotesList = this.table("quotesList");
+    // this.quotesList = this.table("quotesList");
+    // this.universityList = this.table("universityList");
   }
 }
 
-export var db = new hovUni();
+var db = new hovUni();
+db.open();
+export { db };

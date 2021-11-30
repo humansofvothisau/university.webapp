@@ -1,70 +1,54 @@
 import React from "react";
 import config from "../../config";
-import { useCountdown } from "../../hooks/useCountdown";
-import { useQuoteFetch } from "../../hooks/useQuoteFetch";
-import { ClockCircleFilled } from "@ant-design/icons";
+
+import Countdown from "./Countdown";
+import Schedule from "./Schedule";
 
 import "./index.less";
-import { Alert } from "antd";
+import { Alert, Button, Col, Image, Row, Space } from "antd";
+import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
+// import scheduleImg from "../../assets/images/Lich-thi-THPTQG.png";
 
 const Home: React.FC = () => {
-  const timeTillDate = "2022-07-07T07:30:00+0700"; // yyyy-MM-dd
-  const timeTillString = "07/07/2022";
-
-  const { days, hours, minutes, seconds } = useCountdown(timeTillDate);
-  const { quote, error } = useQuoteFetch();
-
-  return (
-    <>
-      <div className="horizontal-center countdown-wrapper">
-        <div className="center">
-          <h2>Kỳ thi tốt nghiệp THPT {new Date(timeTillDate).getFullYear()}</h2>
-          {days === 0 && hours === 0 && minutes === 0 && seconds === 0 ? (
-            <>
-              <div className="countdown-end">
-                <h3>Đang diễn ra!!</h3>
-                <p>Chúc các bạn có một kỳ thi thật tốt nhé!</p>
+  const { xl } = useBreakpoint();
+  return config.SCHEDULE ? (
+    <div className="countdown-wrapper">
+      {xl ? (
+        <Row gutter={{ md: 16, lg: 24 }}>
+          <Col className="gutter-row" span={12}>
+            <Countdown />
+          </Col>
+          <Col className="gutter-row" span={12}>
+            <div className="lich-thi center">
+              <Schedule />
+            </div>
+          </Col>
+        </Row>
+      ) : (
+        <>
+          <Row>
+            <Col className="gutter-row" span={24}>
+              <Countdown />
+            </Col>
+          </Row>
+          <Row style={{ marginTop: "20px" }}>
+            <Col className="gutter-row" span={24}>
+              <div className="lich-thi center">
+                <Schedule />
               </div>
-            </>
-          ) : (
-            <>
-              <div className="countdown-item">
-                <span className="number">{days}</span>
-                <span> ngày</span>
-              </div>
-              <div className="countdown-item">
-                <span className="number">{hours}</span>
-                <span> giờ</span>
-              </div>
-              <div className="countdown-item">
-                <span className="number">{minutes}</span>
-                <span> phút</span>
-              </div>
-              <div className="countdown-item">
-                <span className="number">{seconds}</span>
-                <span> giây</span>
-              </div>
-              <div className="date">
-                <ClockCircleFilled /> Ngày thi dự kiến: {timeTillString}
-              </div>
-            </>
-          )}
-          {error ? (
-            <span>{error}</span>
-          ) : (
-            <Alert
-              type="info"
-              message={quote.quote}
-              description={
-                <em>
-                  <span style={{ textAlign: "right" }}>{quote.author}</span>
-                </em>
-              }
-            />
-          )}
-        </div>
-      </div>
-    </>
+            </Col>
+          </Row>
+        </>
+      )}
+    </div>
+  ) : (
+    <div className="countdown-wrapper" style={{ marginTop: "10vh" }}>
+      <Row>
+        <Col className="gutter-row" span={24}>
+          <Countdown />
+        </Col>
+      </Row>
+    </div>
   );
 };
 

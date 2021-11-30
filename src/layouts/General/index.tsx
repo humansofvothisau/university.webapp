@@ -9,6 +9,7 @@ import { Route, Switch, withRouter } from "react-router-dom";
 import GeneralMenu from "./Menu";
 import University from "../../components/University";
 import Home from "../../components/Home";
+import Error404 from "../../components/Error/404";
 
 const General: React.FC = () => {
   const [showDrawer, setShowDrawer] = useState(false);
@@ -48,7 +49,9 @@ const General: React.FC = () => {
             <University />
           </Route>
 
-          <Route>{/* <NotFound /> */}</Route>
+          <Route>
+            <Error404 />
+          </Route>
         </Switch>
       </Content>
 

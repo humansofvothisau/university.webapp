@@ -78,13 +78,8 @@ const apiSettings = {
   fetchQuote: async (): Promise<Array<Quote>> => {
     const endpoint: string = uniConfig.GET_QUOTE_URL;
     var HttpReq = new XMLHttpRequest();
-    HttpReq.open(
-      "GET",
-      "https://humansofvothisau.com/university/quotes.json",
-      false
-    );
+    HttpReq.open("GET", endpoint, false);
     HttpReq.send(null);
-    console.log(HttpReq.responseText);
     return JSON.parse(HttpReq.responseText);
   },
 };

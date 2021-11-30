@@ -11,5 +11,5 @@ export default {
   GET_BENCHMARK_BASE_URL: `${config.API_URL}/Benchmark?uniUrl=`,
   GET_UNIVERSITY_URL: `${config.API_URL}/University`,
   GET_THPT_BASE_URL: `${config.API_URL}/TotNghiepThpt/`,
-  GET_QUOTE_URL: `humansofvothisau.com/university/quotes.json`,
+  GET_QUOTE_URL: `https://humansofvothisau.com/university/quotes.json`,
 } as UniversityProps;
