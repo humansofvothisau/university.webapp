@@ -1,16 +1,11 @@
-import University from "../interfaces/University";
-import Quote from "../interfaces/Quote";
+import IUniversity from "../interfaces/IUniversity";
+import IQuote from "../interfaces/IQuote";
 
 import { db } from "../database/indexedDatabase";
-
-export const isStoredState = (stateName: string): boolean => {
-  const sessionState = sessionStorage.getItem(stateName);
-
-  return sessionState ? true : false;
-};
+import IScheduleJson, { ISchedule } from "../interfaces/ISchedule";
 
 export const getUniversities = async () => {
-  var universities: Array<University> = [];
+  var universities: Array<IUniversity> = [];
   (await db.universityList.toArray()).forEach((university) => {
     universities.push(university);
   });
@@ -26,20 +21,40 @@ export const getUniversity = async (uniCode: string) => {
   return university;
 };
 
-export const saveUniversity = async (universities: Array<University>) => {
+export const saveUniversity = async (universities: Array<IUniversity>) => {
   db.universityList.clear();
   db.universityList.bulkAdd(universities);
 };
 
 export const getQuotes = async () => {
-  var quotes: Array<Quote> = [];
+  var quotes: Array<IQuote> = [];
   (await db.quotesList.toArray()).forEach((quote) => {
     quotes.push(quote);
   });
   return quotes;
 };
 
-export const saveQuotes = async (quotes: Array<Quote>) => {
+export const saveQuotes = async (quotes: Array<IQuote>) => {
   db.quotesList.clear();
   db.quotesList.bulkAdd(quotes);
+};
+
+export const getSchedule = async () => {
+  var schedule: IScheduleJson = {} as IScheduleJson;
+  (await db.schedule.toArray()).forEach((sche) => {
+    schedule.schedule.push(sche);
+  });
+  schedule.note = "";
+  return schedule;
+};
+
+export const saveSchedule = async (schedule: Array<ISchedule>) => {
+  console.log("Save Schedule");
+  console.log(schedule);
+  try {
+    db.schedule.clear();
+    schedule.forEach((sche) => db.schedule.add(sche));
+  } catch (error: any) {
+    console.log(error.message);
+  }
 };

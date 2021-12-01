@@ -1,9 +1,9 @@
-interface ResultGroup {
+interface IResultGroup {
   key: string;
   value: number;
 }
 
-interface ThptData {
+interface IThptData {
   toan?: number;
   nguVan?: number;
   ngoaiNgu?: number;
@@ -16,8 +16,8 @@ interface ThptData {
   gdcd?: number;
   khxh?: number;
   resultGroup?: string;
-  resultGroupConvert?: ResultGroup[];
+  resultGroupConvert?: IResultGroup[];
   result: string;
 }
 
-export default ThptData;
+export default IThptData;

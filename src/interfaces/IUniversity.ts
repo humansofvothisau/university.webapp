@@ -1,7 +1,7 @@
-interface University {
+interface IUniversity {
   uniCode: string;
   uniName: string;
   url: string;
 }
 
-export default University;
+export default IUniversity;

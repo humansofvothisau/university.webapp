@@ -1,4 +1,4 @@
-export default interface Quote {
+export default interface IQuote {
   quote: string;
   author: string;
 }

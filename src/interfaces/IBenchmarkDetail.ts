@@ -1,4 +1,4 @@
-interface BenchmarkDetail {
+interface IBenchmarkDetail {
   majorCode: string;
   majorName: string;
   subjectGroup: string;
@@ -6,4 +6,4 @@ interface BenchmarkDetail {
   note: string;
 }
 
-export default BenchmarkDetail;
+export default IBenchmarkDetail;
