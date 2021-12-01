@@ -2,16 +2,13 @@ import { useEffect, useState } from "react";
 
 import api from "../api";
 
-import University from "../interfaces/University";
+import IUniversity from "../interfaces/IUniversity";
 
-import {
-  getUniversities,
-  isStoredState,
-  saveUniversity,
-} from "../utils/dbUtils";
+import { getUniversities, saveUniversity } from "../utils/dbUtils";
+import { isStoredItem } from "../utils/storageUtils";
 
 const initialState = {
-  universities: [] as Array<University>,
+  universities: [] as Array<IUniversity>,
 };
 
 export const useUniversityFetch = () => {
@@ -24,11 +21,11 @@ export const useUniversityFetch = () => {
       setError("");
       setLoading(true);
 
-      var uni: Array<University> = [];
+      var uni: Array<IUniversity> = [];
 
       // console.log(isStoredState("university"));
 
-      if (isStoredState("university")) {
+      if (isStoredItem("university", "session")) {
         uni = await getUniversities();
         // console.log("From IndexedDB");
       } else {

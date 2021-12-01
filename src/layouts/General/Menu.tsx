@@ -17,8 +17,6 @@ import {
   withRouter,
 } from "react-router-dom";
 
-import siteLogo from "../../assets/images/SiteLogo.png";
-
 const { SubMenu } = Menu;
 
 const { useBreakpoint } = Grid;
@@ -54,7 +52,10 @@ const GeneralMenu: React.FC<Props & RouteComponentProps> = ({ inDrawer }) => {
           
         </a> */}
         <Link to="/">
-          <img src={siteLogo} alt="ntranphongseBlog-logo" />
+          <img
+            src={process.env.PUBLIC_URL + "/assets/images/SiteLogo.png"}
+            alt="ntranphongseBlog-logo"
+          />
         </Link>
       </Menu.Item>
 

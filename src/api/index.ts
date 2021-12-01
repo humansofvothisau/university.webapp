@@ -1,9 +1,10 @@
 import uniConfig from "../config/university";
 
-import Benchmark from "../interfaces/Benchmark";
-import ThptData from "../interfaces/ThptData";
-import University from "../interfaces/University";
-import Quote from "../interfaces/Quote";
+import IBenchmark from "../interfaces/IBenchmark";
+import IThptData from "../interfaces/IThptData";
+import IUniversity from "../interfaces/IUniversity";
+import IQuote from "../interfaces/IQuote";
+import IScheduleJson from "../interfaces/ISchedule";
 
 const POST = {
   method: "POST",
@@ -32,7 +33,7 @@ const DELETE = {
 };
 
 const apiSettings = {
-  fetchUniversities: async (): Promise<Array<University>> => {
+  fetchUniversities: async (): Promise<Array<IUniversity>> => {
     const endpoint: string = `${uniConfig.GET_UNIVERSITY_URL}`;
     return await fetch(endpoint, { ...GET }).then((response) => {
       if (response.status === 500) {
@@ -45,7 +46,7 @@ const apiSettings = {
     });
   },
 
-  fetchBenchmarks: async (url: string): Promise<Array<Benchmark>> => {
+  fetchBenchmarks: async (url: string): Promise<Array<IBenchmark>> => {
     const endpoint: string = `${uniConfig.GET_BENCHMARK_BASE_URL}${url}`;
     return await fetch(endpoint, { ...GET }).then((response) => {
       if (response.status === 500) {
@@ -58,7 +59,7 @@ const apiSettings = {
     });
   },
 
-  fetchThptData: async (studentCode: string): Promise<ThptData> => {
+  fetchThptData: async (studentCode: string): Promise<IThptData> => {
     const endpoint: string = `${uniConfig.GET_THPT_BASE_URL}${studentCode}`;
     // console.log(endpoint);
     return await fetch(endpoint, { ...GET }).then((response) => {
@@ -75,11 +76,20 @@ const apiSettings = {
     });
   },
 
-  fetchQuote: async (): Promise<Array<Quote>> => {
+  fetchQuote: async (): Promise<Array<IQuote>> => {
     const endpoint: string = uniConfig.GET_QUOTE_URL;
     var HttpReq = new XMLHttpRequest();
     HttpReq.open("GET", endpoint, false);
     HttpReq.send(null);
+    return JSON.parse(HttpReq.responseText);
+  },
+
+  fetchSchedule: async (): Promise<IScheduleJson> => {
+    const endpoint: string = uniConfig.GET_SCHEDULE_URL;
+    var HttpReq = new XMLHttpRequest();
+    HttpReq.open("GET", endpoint, false);
+    HttpReq.send(null);
+    console.log(JSON.parse(HttpReq.responseText));
     return JSON.parse(HttpReq.responseText);
   },
 };

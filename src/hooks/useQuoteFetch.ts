@@ -1,18 +1,19 @@
 import { useEffect, useState } from "react";
-import Quote from "../interfaces/Quote";
+import IQuote from "../interfaces/IQuote";
 import api from "../api";
-import { getQuotes, saveQuotes, isStoredState } from "../utils/dbUtils";
+import { getQuotes, saveQuotes } from "../utils/dbUtils";
+import { isStoredItem } from "../utils/storageUtils";
 import { getRandomInt } from "../utils/numberUtils";
 export const useQuoteFetch = () => {
-  const [quotes, setQuotes] = useState([] as Array<Quote>);
-  const [quote, setQuote] = useState({} as Quote);
+  const [quotes, setQuotes] = useState([] as Array<IQuote>);
+  const [quote, setQuote] = useState({} as IQuote);
   const [error, setError] = useState("");
 
   const fetchQuotes = async () => {
     try {
       setError("");
-      var fetchQuotes: Array<Quote> = [];
-      if (isStoredState("quotes")) {
+      var fetchQuotes: Array<IQuote> = [];
+      if (isStoredItem("quotes", "session")) {
         fetchQuotes = await getQuotes();
       } else {
         fetchQuotes = await api.fetchQuote();
