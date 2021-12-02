@@ -41,6 +41,7 @@ export const saveQuotes = async (quotes: Array<IQuote>) => {
 
 export const getSchedule = async () => {
   var schedule: IScheduleJson = {} as IScheduleJson;
+  schedule.schedule = [] as Array<ISchedule>;
   (await db.schedule.toArray()).forEach((sche) => {
     schedule.schedule.push(sche);
   });
@@ -49,8 +50,6 @@ export const getSchedule = async () => {
 };
 
 export const saveSchedule = async (schedule: Array<ISchedule>) => {
-  console.log("Save Schedule");
-  console.log(schedule);
   try {
     db.schedule.clear();
     schedule.forEach((sche) => db.schedule.add(sche));

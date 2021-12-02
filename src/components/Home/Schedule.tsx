@@ -36,6 +36,7 @@ const Schedule: React.FC = () => {
             afternoon: sche.afternoon,
           }))}
           bordered={true}
+          pagination={false}
         />
       ) : (
         <></>
