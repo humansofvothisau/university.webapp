@@ -11,43 +11,29 @@ import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 
 const Home: React.FC = () => {
   const { xl } = useBreakpoint();
-  return config.SCHEDULE ? (
-    <div className="countdown-wrapper">
-      {xl ? (
-        <Row gutter={{ md: 16, lg: 24 }}>
-          <Col className="gutter-row" span={12}>
+  return (
+    <div className="home-wrapper">
+      <div
+        className="countdown-wrapper"
+        style={{ marginTop: config.SCHEDULE ? "" : "10vh" }}
+      >
+        <Row>
+          <Col className="gutter-row" span={24}>
             <Countdown />
           </Col>
-          <Col className="gutter-row" span={12}>
+        </Row>
+      </div>
+      {config.SCHEDULE ? (
+        <Row style={{ marginTop: "20px" }}>
+          <Col className="gutter-row" span={24}>
             <div className="lich-thi center">
               <Schedule />
             </div>
           </Col>
         </Row>
       ) : (
-        <>
-          <Row>
-            <Col className="gutter-row" span={24}>
-              <Countdown />
-            </Col>
-          </Row>
-          <Row style={{ marginTop: "20px" }}>
-            <Col className="gutter-row" span={24}>
-              <div className="lich-thi center">
-                <Schedule />
-              </div>
-            </Col>
-          </Row>
-        </>
+        <></>
       )}
-    </div>
-  ) : (
-    <div className="countdown-wrapper" style={{ marginTop: "10vh" }}>
-      <Row>
-        <Col className="gutter-row" span={24}>
-          <Countdown />
-        </Col>
-      </Row>
     </div>
   );
 };
