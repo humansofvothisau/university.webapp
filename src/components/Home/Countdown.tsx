@@ -59,7 +59,15 @@ const Countdown: React.FC = () => {
           type="error"
           showIcon
           message="Lỗi!!"
-          description="Đã có lỗi xảy ra! Vui lòng thử lại hoặc liên hệ với Humans Of Vo Thi Sau để báo lỗi."
+          description={
+            <div>
+              <p>
+                Đã có lỗi xảy ra! Vui lòng thử lại hoặc liên hệ với Humans Of Vo
+                Thi Sau để báo lỗi.
+              </p>
+              <p>Chi tiết lỗi: {error}</p>
+            </div>
+          }
         />
       ) : quote ? (
         <Alert

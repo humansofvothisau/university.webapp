@@ -9,6 +9,7 @@ import { Route, Switch, withRouter } from "react-router-dom";
 import GeneralMenu from "./Menu";
 import University from "../../components/University";
 import Home from "../../components/Home";
+import Benchmark from "../../components/University/Benchmark";
 import Error404 from "../../components/Error/404";
 
 const General: React.FC = () => {
@@ -47,6 +48,9 @@ const General: React.FC = () => {
           </Route>
           <Route exact path="/university">
             <University />
+          </Route>
+          <Route path="/university/:uniCode">
+            <Benchmark />
           </Route>
 
           <Route>
