@@ -1,10 +1,10 @@
-import { Input, Spin, Table, Typography } from "antd";
+import { Button, Input, Spin, Table, Typography } from "antd";
 
 import React, { useState } from "react";
 import { Link, useRouteMatch, withRouter } from "react-router-dom";
 
 import { useUniversityFetch } from "../../hooks/useUniversityFetch";
-
+import { SearchOutlined } from "@ant-design/icons";
 import Error500 from "../Error/500";
 import Error from "../Error/Error";
 
@@ -80,7 +80,11 @@ const Universities: React.FC = () => {
           placeholder="Tìm theo mã hoặc tên trường..."
           allowClear
           size="large"
-          enterButton="Tìm kiếm"
+          enterButton={
+            <Button type="primary" htmlType="submit" icon={<SearchOutlined />}>
+              Tìm kiếm
+            </Button>
+          }
           onSearch={searchUni}
         />
       </div>

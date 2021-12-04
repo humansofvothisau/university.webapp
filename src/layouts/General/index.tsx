@@ -2,15 +2,14 @@ import { CloseOutlined, MenuOutlined } from "@ant-design/icons";
 import { Affix, BackTop, Drawer, Typography } from "antd";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import Layout, { Content, Footer, Header } from "antd/lib/layout/layout";
-
 import React, { useState } from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
-
-import GeneralMenu from "./Menu";
-import University from "../../components/University";
-import Home from "../../components/Home";
-import Benchmark from "../../components/University/Benchmark";
 import Error404 from "../../components/Error/404";
+import Home from "../../components/Home";
+import Thpt from "../../components/THPT";
+import University from "../../components/University";
+import Benchmark from "../../components/University/Benchmark";
+import GeneralMenu from "./Menu";
 
 const General: React.FC = () => {
   const [showDrawer, setShowDrawer] = useState(false);
@@ -52,7 +51,9 @@ const General: React.FC = () => {
           <Route path="/university/:uniCode">
             <Benchmark />
           </Route>
-
+          <Route exact path="/tot-nghiep-thpt">
+            <Thpt />
+          </Route>
           <Route>
             <Error404 />
           </Route>
