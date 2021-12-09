@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
-
 import api from "../api";
-
 import IUniversity from "../interfaces/IUniversity";
-
 import { getUniversities, saveUniversity } from "../utils/dbUtils";
 import { isStoredItem } from "../utils/storageUtils";
 

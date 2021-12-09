@@ -1,8 +1,7 @@
 import { HomeOutlined } from "@ant-design/icons";
 import { Button, Result } from "antd";
-import { HelmetProvider, Helmet } from "react-helmet-async";
-
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import config from "../../config";
 
 type Props = {
@@ -56,7 +55,7 @@ const Error404: React.FC<Props> = ({
     <>
       <Helmet>
         <title>Trang không tồn tại - {config.APP_NAME}</title>
-        <link rel="canonical" href="https://university.humansofvothisau.com" />
+        <link rel="canonical" href={`${config.APP_URL}`} />
         <meta
           property="og:title"
           content={`Trang không tồn tại - ${config.APP_NAME}`}
@@ -65,10 +64,7 @@ const Error404: React.FC<Props> = ({
           property="og:description"
           content="Humans Of Vo Thi Sau đồng hành cùng các VTS-ers trong kỳ thi Tốt nghiệp THPT"
         />
-        <meta
-          property="og:url"
-          content="https://university.humansofvothisau.com"
-        />
+        <meta property="og:url" content={`${config.APP_URL}`} />
         <meta name="robots" content="follow, noindex" />
       </Helmet>
       <Result

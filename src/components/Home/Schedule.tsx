@@ -1,6 +1,6 @@
+import { Alert, Table } from "antd";
 import React from "react";
 import { useScheduleFetch } from "../../hooks/useScheduleFetch";
-import { Alert, Table } from "antd";
 
 const Schedule: React.FC = () => {
   const { schedule, scheduleError } = useScheduleFetch();

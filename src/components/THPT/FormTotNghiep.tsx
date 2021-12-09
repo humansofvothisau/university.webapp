@@ -1,7 +1,5 @@
 import { Alert, Button, Form, InputNumber, Select, Typography } from "antd";
-
 import React, { useState } from "react";
-
 import IThptData from "../../interfaces/IThptData";
 import { calculateTHPT, TotNghiep } from "../../utils/calculationUtils";
 

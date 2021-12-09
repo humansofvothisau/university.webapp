@@ -1,17 +1,16 @@
 import uniConfig from "../config/university";
-
 import IBenchmark from "../interfaces/IBenchmark";
-import IThptData from "../interfaces/IThptData";
-import IUniversity from "../interfaces/IUniversity";
 import IQuote from "../interfaces/IQuote";
 import IScheduleJson from "../interfaces/ISchedule";
+import IThptData from "../interfaces/IThptData";
+import IUniversity from "../interfaces/IUniversity";
 
-const POST = {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-};
+// const POST = {
+//   method: "POST",
+//   headers: {
+//     "Content-Type": "application/json",
+//   },
+// };
 const GET = {
   crossDomain: true,
   method: "GET",
@@ -19,18 +18,18 @@ const GET = {
     "Content-Type": "application/json",
   },
 };
-const PUT = {
-  method: "PUT",
-  headers: {
-    "Content-Type": "application/json",
-  },
-};
-const DELETE = {
-  method: "DELETE",
-  headers: {
-    "Content-Type": "application/json",
-  },
-};
+// const PUT = {
+//   method: "PUT",
+//   headers: {
+//     "Content-Type": "application/json",
+//   },
+// };
+// const DELETE = {
+//   method: "DELETE",
+//   headers: {
+//     "Content-Type": "application/json",
+//   },
+// };
 
 const apiSettings = {
   fetchUniversities: async (): Promise<Array<IUniversity>> => {
@@ -89,7 +88,6 @@ const apiSettings = {
     var HttpReq = new XMLHttpRequest();
     HttpReq.open("GET", endpoint, false);
     HttpReq.send(null);
-    console.log(JSON.parse(HttpReq.responseText));
     return JSON.parse(HttpReq.responseText);
   },
 };

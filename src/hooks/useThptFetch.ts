@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-
 import api from "../api";
-
 import IThptData from "../interfaces/IThptData";
 
 const initialState = {
