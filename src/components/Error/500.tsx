@@ -8,7 +8,7 @@ const Error500: React.FC = () => (
   <HelmetProvider>
     <Helmet>
       <title>Có lỗi xảy ra - {config.APP_NAME}</title>
-      <link rel="canonical" href="https://university.humansofvothisau.com" />
+      <link rel="canonical" href={`${config.APP_URL}`} />
       <meta
         property="og:title"
         content={`Có lỗi xảy ra - ${config.APP_NAME}`}
@@ -17,10 +17,7 @@ const Error500: React.FC = () => (
         property="og:description"
         content="Humans Of Vo Thi Sau đồng hành cùng các VTS-ers trong kỳ thi Tốt nghiệp THPT"
       />
-      <meta
-        property="og:url"
-        content="https://university.humansofvothisau.com"
-      />
+      <meta property="og:url" content={`${config.APP_URL}`} />
       <meta name="robots" content="follow, noindex" />
     </Helmet>
     <Result

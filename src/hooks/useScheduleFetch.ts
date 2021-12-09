@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import IScheduleJson from "../interfaces/ISchedule";
-
-import { isStoredItem } from "../utils/storageUtils";
-import { getSchedule, saveSchedule } from "../utils/dbUtils";
 import api from "../api";
+import IScheduleJson from "../interfaces/ISchedule";
+import { getSchedule, saveSchedule } from "../utils/dbUtils";
+import { isStoredItem } from "../utils/storageUtils";
 
 export const useScheduleFetch = () => {
   const [schedule, setSchedule] = useState({} as IScheduleJson);

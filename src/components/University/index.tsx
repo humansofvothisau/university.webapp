@@ -1,10 +1,10 @@
-import { Button, Input, Spin, Table, Typography } from "antd";
-
-import React, { useState } from "react";
-import { Link, useRouteMatch, withRouter } from "react-router-dom";
-
-import { useUniversityFetch } from "../../hooks/useUniversityFetch";
 import { SearchOutlined } from "@ant-design/icons";
+import { Button, Input, Spin, Table, Typography } from "antd";
+import React, { useState } from "react";
+import { Helmet } from "react-helmet-async";
+import { Link, useRouteMatch, withRouter } from "react-router-dom";
+import config from "../../config";
+import { useUniversityFetch } from "../../hooks/useUniversityFetch";
 import Error500 from "../Error/500";
 import Error from "../Error/Error";
 
@@ -24,7 +24,6 @@ const Universities: React.FC = () => {
   const [search, setSearch] = useState("");
 
   let { url } = useRouteMatch();
-  console.log(url);
 
   // Columns
   const columns = [
@@ -66,53 +65,77 @@ const Universities: React.FC = () => {
     }
   }
 
+  const title = `Tra cứu điểm chuẩn Đại học, Cao đẳng`;
+
   return (
     <>
-      <h1>Danh sách các trường</h1>
+      <Helmet>
+        <meta
+          name="description"
+          content="Tra cứu điểm chuẩn của các trường Đại học và Cao đẳng trên toàn quốc mới nhất tại Humans Of Vo Thi Sau"
+        />
+        <title>
+          {title} - {config.APP_NAME}
+        </title>
+        <link rel="canonical" href={`${config.APP_URL}/university`} />
+        <meta property="og:title" content={`${title} - ${config.APP_NAME}`} />
+        <meta
+          property="og:description"
+          content="Tra cứu điểm chuẩn của các trường Đại học và Cao đẳng trên toàn quốc mới nhất tại Humans Of Vo Thi Sau"
+        />
+        <meta property="og:url" content={`${config.APP_URL}/university`} />
+      </Helmet>
+      <div className="university-wrapper">
+        <h1>Danh sách các trường</h1>
 
-      <div
-        id="search-group"
-        style={{
-          marginBottom: "20px",
-        }}
-      >
-        <Search
-          placeholder="Tìm theo mã hoặc tên trường..."
-          allowClear
-          size="large"
-          enterButton={
-            <Button type="primary" htmlType="submit" icon={<SearchOutlined />}>
-              Tìm kiếm
-            </Button>
-          }
-          onSearch={searchUni}
-        />
-      </div>
-      {loading ? (
-        <Spin tip="Đang lấy danh sách..." className="spinner">
-          {/* <></> */}
-        </Spin>
-      ) : (
-        <Table
-          columns={columns}
-          dataSource={displayData.map((uni) => ({
-            key: uni.uniCode,
-            uniCode: uni.uniCode,
-            uniName: uni.uniName,
-            url: uni.url,
-          }))}
-          bordered={true}
-        />
-      )}
-      <Typography.Paragraph style={{ marginTop: "20px" }}>
-        Nguồn dữ liệu:{" "}
-        <Typography.Link
-          href="https://diemthi.tuyensinh247.com/diem-chuan.html"
-          target="_blank"
+        <div
+          id="search-group"
+          style={{
+            marginBottom: "20px",
+          }}
         >
-          TuyenSinh247
-        </Typography.Link>
-      </Typography.Paragraph>
+          <Search
+            placeholder="Tìm theo mã hoặc tên trường..."
+            allowClear
+            size="large"
+            enterButton={
+              <Button
+                type="primary"
+                htmlType="submit"
+                icon={<SearchOutlined />}
+              >
+                Tìm kiếm
+              </Button>
+            }
+            onSearch={searchUni}
+          />
+        </div>
+        {loading ? (
+          <Spin tip="Đang lấy danh sách..." className="spinner">
+            {/* <></> */}
+          </Spin>
+        ) : (
+          <Table
+            columns={columns}
+            dataSource={displayData.map((uni) => ({
+              key: uni.uniCode,
+              uniCode: uni.uniCode,
+              uniName: uni.uniName,
+              url: uni.url,
+            }))}
+            bordered={true}
+          />
+        )}
+        <Typography.Paragraph style={{ marginTop: "20px" }}>
+          Nguồn dữ liệu:{" "}
+          <Typography.Link
+            href="https://diemthi.tuyensinh247.com/diem-chuan.html"
+            target="_blank"
+          >
+            TuyenSinh247
+          </Typography.Link>
+        </Typography.Paragraph>
+      </div>
     </>
   );
 };

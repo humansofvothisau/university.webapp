@@ -1,7 +1,7 @@
 import { MessageOutlined, RedoOutlined } from "@ant-design/icons";
 import { Button, Result } from "antd";
 import React from "react";
-import { HelmetProvider, Helmet } from "react-helmet-async";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import config from "../../config";
 type Props = {
   message?: string;
@@ -23,7 +23,7 @@ const Error: React.FC<Props> = ({ message }) => {
     <HelmetProvider>
       <Helmet>
         <title>Có lỗi xảy ra - {config.APP_NAME}</title>
-        <link rel="canonical" href="https://university.humansofvothisau.com" />
+        <link rel="canonical" href={`${config.APP_URL}`} />
         <meta
           property="og:title"
           content={`Có lỗi xảy ra - ${config.APP_NAME}`}
@@ -32,10 +32,7 @@ const Error: React.FC<Props> = ({ message }) => {
           property="og:description"
           content="Humans Of Vo Thi Sau đồng hành cùng các VTS-ers trong kỳ thi Tốt nghiệp THPT"
         />
-        <meta
-          property="og:url"
-          content="https://university.humansofvothisau.com"
-        />
+        <meta property="og:url" content={`${config.APP_URL}`} />
         <meta name="robots" content="follow, noindex" />
       </Helmet>
       <Result

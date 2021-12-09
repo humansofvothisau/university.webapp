@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import IQuote from "../interfaces/IQuote";
 import api from "../api";
+import IQuote from "../interfaces/IQuote";
 import { getQuotes, saveQuotes } from "../utils/dbUtils";
-import { isStoredItem } from "../utils/storageUtils";
 import { getRandomInt } from "../utils/numberUtils";
+import { isStoredItem } from "../utils/storageUtils";
 export const useQuoteFetch = () => {
   const [quotes, setQuotes] = useState([] as Array<IQuote>);
   const [quote, setQuote] = useState({} as IQuote);

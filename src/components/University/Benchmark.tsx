@@ -5,12 +5,11 @@ import {
 } from "@ant-design/icons";
 import { Alert, Breadcrumb, Button, Spin, Table, Tabs, Typography } from "antd";
 import { Breakpoint } from "antd/lib/_util/responsiveObserve";
-
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import { Link, useParams } from "react-router-dom";
-
+import config from "../../config";
 import { useBenchmarkFetch } from "../../hooks/useBenchmarkFetch";
-
 import Error404 from "../Error/404";
 import Error500 from "../Error/500";
 import Error from "../Error/Error";
@@ -107,55 +106,82 @@ const Benchmark: React.FC = () => {
       </Link>
     </>
   );
+
+  const title = `Điểm chuẩn trường ${uni.uniName}`;
+
   return (
     <>
-      <div className="benchmark">{breadcrumb}</div>
-      <h1>Điểm chuẩn - {uni.uniName}</h1>
+      <Helmet>
+        <meta
+          name="description"
+          content={`Tra cứu điểm chuẩn trường ${uni.uniName} mới nhất tại Humans Of Vo Thi Sau`}
+        />
+        <title>
+          {title} - {config.APP_NAME}
+        </title>
+        <link
+          rel="canonical"
+          href={`${config.APP_URL}/university/${uni.uniCode}`}
+        />
+        <meta property="og:title" content={`${title} - ${config.APP_NAME}`} />
+        <meta
+          property="og:description"
+          content={`Tra cứu điểm chuẩn trường ${uni.uniName} mới nhất tại Humans Of Vo Thi Sau`}
+        />
+        <meta
+          property="og:url"
+          content={`${config.APP_URL}/university/${uni.uniCode}`}
+        />
+      </Helmet>
+      <div className="benchmark-wrapper">
+        <div className="benchmark">{breadcrumb}</div>
+        <h1>Điểm chuẩn - {uni.uniName}</h1>
 
-      {loading ? (
-        <Spin tip="Đang lấy dữ liệu điểm chuẩn..." className="spinner"></Spin>
-      ) : state.length > 0 ? (
-        <Tabs type="card">
-          {state.map((benchmark) => {
-            iCount = 0;
-            return (
-              <Tabs.TabPane tab={benchmark.year} key={benchmark.year}>
-                <Table
-                  columns={columns}
-                  dataSource={benchmark.data.map((details) => ({
-                    key: `${benchmark.year}_${details.majorCode}_${++iCount}`,
-                    majorCode: details.majorCode,
-                    majorName: details.majorName,
-                    subjectGroup: details.subjectGroup,
-                    point: details.point,
-                    note: details.note,
-                  }))}
-                  bordered={true}
-                  pagination={{ showSizeChanger: false, pageSize: 20 }}
-                />
-              </Tabs.TabPane>
-            );
-          })}
-        </Tabs>
-      ) : (
-        <div className="horizontal-center">
-          <Alert
-            message="Không có dữ liệu"
-            description={noDataMessage}
-            type="error"
-            showIcon
-          />
-        </div>
-      )}
-      <Typography.Paragraph style={{ marginTop: "20px" }}>
-        Nguồn dữ liệu:{" "}
-        <Typography.Link
-          href="https://diemthi.tuyensinh247.com/diem-chuan.html"
-          target="_blank"
-        >
-          TuyenSinh247
-        </Typography.Link>
-      </Typography.Paragraph>
+        {loading ? (
+          <Spin tip="Đang lấy dữ liệu điểm chuẩn..." className="spinner"></Spin>
+        ) : state.length > 0 ? (
+          <Tabs type="card">
+            {state.map((benchmark) => {
+              iCount = 0;
+              return (
+                <Tabs.TabPane tab={benchmark.year} key={benchmark.year}>
+                  <Table
+                    columns={columns}
+                    dataSource={benchmark.data.map((details) => ({
+                      key: `${benchmark.year}_${details.majorCode}_${++iCount}`,
+                      majorCode: details.majorCode,
+                      majorName: details.majorName,
+                      subjectGroup: details.subjectGroup,
+                      point: details.point,
+                      note: details.note,
+                    }))}
+                    bordered={true}
+                    pagination={{ showSizeChanger: false, pageSize: 20 }}
+                  />
+                </Tabs.TabPane>
+              );
+            })}
+          </Tabs>
+        ) : (
+          <div className="horizontal-center">
+            <Alert
+              message="Không có dữ liệu"
+              description={noDataMessage}
+              type="error"
+              showIcon
+            />
+          </div>
+        )}
+        <Typography.Paragraph style={{ marginTop: "20px" }}>
+          Nguồn dữ liệu:{" "}
+          <Typography.Link
+            href="https://diemthi.tuyensinh247.com/diem-chuan.html"
+            target="_blank"
+          >
+            TuyenSinh247
+          </Typography.Link>
+        </Typography.Paragraph>
+      </div>
     </>
   );
 };

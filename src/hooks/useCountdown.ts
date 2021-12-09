@@ -1,5 +1,5 @@
-import { difference } from "../utils/dateUtils";
 import { useEffect, useState } from "react";
+import { difference } from "../utils/dateUtils";
 
 export const useCountdown = (timeTillDate: string) => {
   const [days, setDays] = useState(0);

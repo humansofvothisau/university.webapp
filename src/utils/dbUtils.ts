@@ -1,8 +1,7 @@
-import IUniversity from "../interfaces/IUniversity";
-import IQuote from "../interfaces/IQuote";
-
 import { db } from "../database/indexedDatabase";
+import IQuote from "../interfaces/IQuote";
 import IScheduleJson, { ISchedule } from "../interfaces/ISchedule";
+import IUniversity from "../interfaces/IUniversity";
 
 export const getUniversities = async () => {
   var universities: Array<IUniversity> = [];
@@ -54,6 +53,6 @@ export const saveSchedule = async (schedule: Array<ISchedule>) => {
     db.schedule.clear();
     schedule.forEach((sche) => db.schedule.add(sche));
   } catch (error: any) {
-    console.log(error.message);
+    // console.log(error.message);
   }
 };

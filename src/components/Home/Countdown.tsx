@@ -1,17 +1,15 @@
+import { ClockCircleFilled } from "@ant-design/icons";
+import { Alert } from "antd";
 import React from "react";
+import config from "../../config";
 import { useCountdown } from "../../hooks/useCountdown";
 import { useQuoteFetch } from "../../hooks/useQuoteFetch";
-
-import {
-  ClockCircleFilled,
-  RedoOutlined,
-  MessageOutlined,
-} from "@ant-design/icons";
-import { Alert } from "antd";
+import { convertTimeString } from "../../utils/dateUtils";
 
 const Countdown: React.FC = () => {
-  const timeTillDate = "2022-07-07T07:30:00+0700"; // yyyy-MM-dd
-  const timeTillString = "07/07/2022";
+  // const timeTillDate = "2022-07-07T07:30:00+0700"; // yyyy-MM-dd
+  const timeTillDate = config.THPT_DATE;
+  const timeTillString = convertTimeString(new Date(timeTillDate));
 
   const { days, hours, minutes, seconds } = useCountdown(timeTillDate);
   const { quote, error } = useQuoteFetch();

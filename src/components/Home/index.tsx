@@ -1,16 +1,16 @@
+import { Col, Row } from "antd";
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import config from "../../config";
-
 import Countdown from "./Countdown";
-import Schedule from "./Schedule";
-import { HelmetProvider, Helmet } from "react-helmet-async";
 import "./index.less";
-import { Alert, Button, Col, Image, Row, Space } from "antd";
-import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
-// import scheduleImg from "../../assets/images/Lich-thi-THPTQG.png";
+import Schedule from "./Schedule";
 
 const Home: React.FC = () => {
-  const { xl } = useBreakpoint();
+  const title = `Kỳ thi Tốt nghiệp THPT ${new Date(
+    config.THPT_DATE
+  ).getFullYear()}`;
+
   return (
     <>
       <Helmet>
@@ -18,17 +18,16 @@ const Home: React.FC = () => {
           name="description"
           content="Humans Of Vo Thi Sau đồng hành cùng các VTS-ers trong kỳ thi Tốt nghiệp THPT"
         />
-        <title>Trang chủ - {config.APP_NAME}</title>
-        <link rel="canonical" href="https://university.humansofvothisau.com" />
-        <meta property="og:title" content={`Trang chủ - ${config.APP_NAME}`} />
+        <title>
+          {title} - {config.APP_NAME}
+        </title>
+        <link rel="canonical" href={`${config.APP_URL}`} />
+        <meta property="og:title" content={`${title} - ${config.APP_NAME}`} />
         <meta
           property="og:description"
           content="Humans Of Vo Thi Sau đồng hành cùng các VTS-ers trong kỳ thi Tốt nghiệp THPT"
         />
-        <meta
-          property="og:url"
-          content="https://university.humansofvothisau.com"
-        />
+        <meta property="og:url" content={`${config.APP_URL}`} />
       </Helmet>
       <div className="home-wrapper">
         <div

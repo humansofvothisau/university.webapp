@@ -2,12 +2,12 @@ const parseEnvString = (key: string): string | undefined => {
   return process.env[key];
 };
 
-const parseEnvNumber = (key: string): number | undefined => {
-  if (process.env[key]) {
-    return Number(process.env[key]);
-  }
-  return undefined;
-};
+// const parseEnvNumber = (key: string): number | undefined => {
+//   if (process.env[key]) {
+//     return Number(process.env[key]);
+//   }
+//   return undefined;
+// };
 
 const parseEnvBoolean = (key: string): boolean | undefined => {
   if (process.env[key]) {

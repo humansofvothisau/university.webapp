@@ -3,12 +3,11 @@ import {
   FacebookFilled,
   FireFilled,
   GithubFilled,
+  InfoCircleFilled,
   MenuOutlined,
   ReadFilled,
-  InfoCircleFilled,
 } from "@ant-design/icons";
 import { Grid, Menu } from "antd";
-
 import React from "react";
 import {
   Link,
