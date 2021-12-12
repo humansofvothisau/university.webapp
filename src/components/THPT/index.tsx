@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet-async";
 import { withRouter } from "react-router-dom";
 import config from "../../config";
 import { useThptFetch } from "../../hooks/useThptFetch";
+import Adsense from "../Adsense";
 import Error404 from "../Error/404";
 import Error500 from "../Error/500";
 import Error from "../Error/Error";
@@ -86,7 +87,12 @@ const Thpt: React.FC = () => {
       <div className="thpt-wrap">
         <h1>Tra cứu điểm thi Tốt nghiệp THPT {new Date().getFullYear()}</h1>
         <FormSBD setStudentCode={setStudentCode} />
-
+        <div
+          className="ads"
+          style={{ marginTop: "20px", marginBottom: "20px" }}
+        >
+          <Adsense />
+        </div>
         {loading ? (
           <Spin
             tip="Đang lấy dữ liệu..."
@@ -123,6 +129,16 @@ const Thpt: React.FC = () => {
                         )
                       }
                     />
+                  </Col>
+                </Row>
+                <Row>
+                  <Col span={24}>
+                    <div
+                      className="ads"
+                      style={{ marginTop: "20px", marginBottom: "20px" }}
+                    >
+                      <Adsense />
+                    </div>
                   </Col>
                 </Row>
                 {data.toan && data.nguVan ? (

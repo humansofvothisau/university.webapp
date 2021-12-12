@@ -10,6 +10,7 @@ import { Helmet } from "react-helmet-async";
 import { Link, useParams } from "react-router-dom";
 import config from "../../config";
 import { useBenchmarkFetch } from "../../hooks/useBenchmarkFetch";
+import Adsense from "../Adsense";
 import Error404 from "../Error/404";
 import Error500 from "../Error/500";
 import Error from "../Error/Error";
@@ -136,7 +137,12 @@ const Benchmark: React.FC = () => {
       <div className="benchmark-wrapper">
         <div className="benchmark">{breadcrumb}</div>
         <h1>Điểm chuẩn - {uni.uniName}</h1>
-
+        <div
+          className="ads"
+          style={{ marginTop: "20px", marginBottom: "20px" }}
+        >
+          <Adsense />
+        </div>
         {loading ? (
           <Spin tip="Đang lấy dữ liệu điểm chuẩn..." className="spinner"></Spin>
         ) : state.length > 0 ? (

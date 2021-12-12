@@ -5,6 +5,7 @@ import config from "../../config";
 import Countdown from "./Countdown";
 import "./index.less";
 import Schedule from "./Schedule";
+import Adsense from "../Adsense";
 
 const Home: React.FC = () => {
   const title = `Kỳ thi Tốt nghiệp THPT ${new Date(
@@ -39,6 +40,12 @@ const Home: React.FC = () => {
               <Countdown />
             </Col>
           </Row>
+        </div>
+        <div
+          className="ads"
+          style={{ marginTop: "20px", marginBottom: "20px" }}
+        >
+          <Adsense />
         </div>
         {config.SCHEDULE ? (
           <Row style={{ marginTop: "20px" }}>

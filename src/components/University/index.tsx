@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet-async";
 import { Link, useRouteMatch, withRouter } from "react-router-dom";
 import config from "../../config";
 import { useUniversityFetch } from "../../hooks/useUniversityFetch";
+import Adsense from "../Adsense";
 import Error500 from "../Error/500";
 import Error from "../Error/Error";
 
@@ -109,6 +110,9 @@ const Universities: React.FC = () => {
             }
             onSearch={searchUni}
           />
+        </div>
+        <div className="ads" style={{ marginBottom: "20px" }}>
+          <Adsense />
         </div>
         {loading ? (
           <Spin tip="Đang lấy danh sách..." className="spinner">
