@@ -23,7 +23,7 @@ export const useThptFetch = () => {
         data: thptData,
       });
     } catch (error: any) {
-      setError(error.message);
+      setError(error);
     }
     setLoading(false);
   };

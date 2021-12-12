@@ -1,10 +1,11 @@
+import config from "../config";
 import uniConfig from "../config/university";
 import IBenchmark from "../interfaces/IBenchmark";
 import IQuote from "../interfaces/IQuote";
 import IScheduleJson from "../interfaces/ISchedule";
 import IThptData from "../interfaces/IThptData";
 import IUniversity from "../interfaces/IUniversity";
-
+import IWpPost from "../interfaces/IWpPost";
 // const POST = {
 //   method: "POST",
 //   headers: {
@@ -89,6 +90,19 @@ const apiSettings = {
     HttpReq.open("GET", endpoint, false);
     HttpReq.send(null);
     return JSON.parse(HttpReq.responseText);
+  },
+
+  fetchWpPosts: async (): Promise<Array<IWpPost>> => {
+    const endpoint: string = config.WP_POST_API_URL;
+    return await fetch(endpoint, { ...GET }).then((response) => {
+      if (response.status === 500) {
+        throw new Error("500");
+      }
+      if (!response.ok) {
+        throw new Error("error");
+      }
+      return response.json();
+    });
   },
 };
 

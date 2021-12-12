@@ -22,16 +22,16 @@ interface ConfigProps {
   APP_NAME: string;
   THPT_DATE: string;
   SCHEDULE: boolean;
+  WP_POST_API_URL: string;
 }
 
 export default {
   APP_URL:
     parseEnvString("REACT_APP_URL") ||
     "https://university.humansofvothisau.com",
-  API_URL:
-    parseEnvString("REACT_APP_API_URL") ||
-    "http://api.university.humansofvothisau.com/api",
+  API_URL: parseEnvString("REACT_APP_API_URL") || "",
   APP_NAME: parseEnvString("REACT_APP_NAME") || "HOV UniInfo",
   THPT_DATE: parseEnvString("REACT_APP_THPT_DATE") || "",
   SCHEDULE: parseEnvBoolean("REACT_APP_SCHEDULE") || false,
+  WP_POST_API_URL: parseEnvString("REACT_APP_WP_POST_API_URL") || "",
 } as ConfigProps;

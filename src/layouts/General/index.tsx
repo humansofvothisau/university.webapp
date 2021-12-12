@@ -5,6 +5,7 @@ import { withRouter } from "react-router-dom";
 import Routes from "../Routes";
 import BottomFooter from "./BottomFooter";
 import TopHeader from "./TopHeader";
+import WpPosts from "../../components/WpPosts";
 
 const General: React.FC = () => {
   return (
@@ -14,6 +15,9 @@ const General: React.FC = () => {
       </Affix>
 
       <Content>
+        <div className="posts-marquee" style={{ marginBottom: "20px" }}>
+          <WpPosts />
+        </div>
         <Routes />
       </Content>
 

@@ -9,7 +9,7 @@ const TopHeader: React.FC = () => {
   return (
     <Header style={{ background: "white" }}>
       <nav>
-        <GeneralMenu inDrawer={false} />
+        <GeneralMenu inDrawer={false} setDrawer={setShowDrawer} />
         <MenuOutlined
           className="bars-menu"
           onClick={() => setShowDrawer(true)}
@@ -24,7 +24,7 @@ const TopHeader: React.FC = () => {
           visible={showDrawer}
           width="355px"
         >
-          <GeneralMenu inDrawer={true} />
+          <GeneralMenu inDrawer={true} setDrawer={setShowDrawer} />
         </Drawer>
       </nav>
     </Header>

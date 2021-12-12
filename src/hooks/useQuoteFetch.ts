@@ -22,7 +22,7 @@ export const useQuoteFetch = () => {
       var numQuote = getRandomInt(0, fetchQuotes.length);
       setQuote(fetchQuotes[numQuote]);
     } catch (error: any) {
-      setError(error.message);
+      setError(error);
     }
   };
 

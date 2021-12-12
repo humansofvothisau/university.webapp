@@ -33,7 +33,7 @@ export const useUniversityFetch = () => {
         universities: uni,
       });
     } catch (error: any) {
-      setError(error.message);
+      setError(error);
     }
 
     setLoading(false);

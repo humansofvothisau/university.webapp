@@ -20,7 +20,7 @@ export const useScheduleFetch = () => {
       }
       setSchedule(fetchSchedule);
     } catch (error: any) {
-      setScheduleError(error.message);
+      setScheduleError(error);
     }
   };
 

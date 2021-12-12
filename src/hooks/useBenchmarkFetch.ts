@@ -26,7 +26,7 @@ export const useBenchmarkFetch = (uniCode: string) => {
       const benchmarkData = await api.fetchBenchmarks(uniData.url);
       setState(benchmarkData);
     } catch (error: any) {
-      setError(error.message);
+      setError(error);
     }
     setLoading(false);
   }, [uniCode]);
