@@ -140,14 +140,14 @@ const Benchmark: React.FC = () => {
         <div className="benchmark">{breadcrumb}</div>
         <h1>Điểm chuẩn - {uni.uniName}</h1>
         {md ? (
+          <></>
+        ) : (
           <div
             className="ads"
             style={{ marginTop: "20px", marginBottom: "20px" }}
           >
             <Adsense />
           </div>
-        ) : (
-          <></>
         )}
         {loading ? (
           <Spin tip="Đang lấy dữ liệu điểm chuẩn..." className="spinner"></Spin>

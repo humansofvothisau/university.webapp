@@ -88,14 +88,14 @@ const Thpt: React.FC = () => {
         <h1>Tra cứu điểm thi Tốt nghiệp THPT {new Date().getFullYear()}</h1>
         <FormSBD setStudentCode={setStudentCode} />
         {md ? (
+          <></>
+        ) : (
           <div
             className="ads"
             style={{ marginTop: "20px", marginBottom: "20px" }}
           >
             <Adsense />
           </div>
-        ) : (
-          <></>
         )}
         {loading ? (
           <Spin
@@ -155,6 +155,8 @@ const Thpt: React.FC = () => {
                       </Col>
                     </Row>
                     {md ? (
+                      <></>
+                    ) : (
                       <Row>
                         <Col span={24}>
                           <div
@@ -165,8 +167,6 @@ const Thpt: React.FC = () => {
                           </div>
                         </Col>
                       </Row>
-                    ) : (
-                      <></>
                     )}
                   </>
                 ) : (

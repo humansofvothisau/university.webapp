@@ -45,14 +45,14 @@ const Home: React.FC = () => {
           </Row>
         </div>
         {md ? (
+          <></>
+        ) : (
           <div
             className="ads"
             style={{ marginTop: "20px", marginBottom: "20px" }}
           >
             <Adsense />
           </div>
-        ) : (
-          <></>
         )}
         {config.SCHEDULE ? (
           <Row style={{ marginTop: "20px" }}>

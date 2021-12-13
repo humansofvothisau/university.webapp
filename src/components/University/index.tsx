@@ -114,14 +114,14 @@ const Universities: React.FC = () => {
           />
         </div>
         {md ? (
+          <></>
+        ) : (
           <div
             className="ads"
             style={{ marginTop: "20px", marginBottom: "20px" }}
           >
             <Adsense />
           </div>
-        ) : (
-          <></>
         )}
         {loading ? (
           <Spin tip="Đang lấy danh sách..." className="spinner">
