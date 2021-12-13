@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useLocation } from "react-router";
 
 declare global {
   interface Window {
@@ -7,11 +8,14 @@ declare global {
 }
 
 const Adsense: React.FC = () => {
+  const location = useLocation();
+
   useEffect(() => {
     (window.adsbygoogle = window.adsbygoogle || []).push({});
-  });
+  }, [location.pathname]);
+
   return (
-    <>
+    <div key={location.pathname}>
       <ins
         className="adsbygoogle"
         style={{ display: "block" }}
@@ -20,7 +24,7 @@ const Adsense: React.FC = () => {
         data-ad-format="auto"
         data-full-width-responsive="true"
       ></ins>
-    </>
+    </div>
   );
 };
 
