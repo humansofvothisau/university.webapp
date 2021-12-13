@@ -87,12 +87,16 @@ const Thpt: React.FC = () => {
       <div className="thpt-wrap">
         <h1>Tra cứu điểm thi Tốt nghiệp THPT {new Date().getFullYear()}</h1>
         <FormSBD setStudentCode={setStudentCode} />
-        <div
-          className="ads"
-          style={{ marginTop: "20px", marginBottom: "20px" }}
-        >
-          <Adsense />
-        </div>
+        {md ? (
+          <div
+            className="ads"
+            style={{ marginTop: "20px", marginBottom: "20px" }}
+          >
+            <Adsense />
+          </div>
+        ) : (
+          <></>
+        )}
         {loading ? (
           <Spin
             tip="Đang lấy dữ liệu..."
@@ -135,20 +139,36 @@ const Thpt: React.FC = () => {
                   <Col span={24}>
                     <div
                       className="ads"
-                      style={{ marginTop: "20px", marginBottom: "20px" }}
+                      style={{ marginTop: "40px", marginBottom: "0px" }}
                     >
                       <Adsense />
                     </div>
                   </Col>
                 </Row>
                 {data.toan && data.nguVan ? (
-                  <Row>
-                    <Col span={24}>
-                      <div className="phongnt-border">
-                        <FormTotNghiep data={data} />
-                      </div>
-                    </Col>
-                  </Row>
+                  <>
+                    <Row>
+                      <Col span={24}>
+                        <div className="phongnt-border">
+                          <FormTotNghiep data={data} />
+                        </div>
+                      </Col>
+                    </Row>
+                    {md ? (
+                      <Row>
+                        <Col span={24}>
+                          <div
+                            className="ads"
+                            style={{ marginTop: "40px", marginBottom: "0px" }}
+                          >
+                            <Adsense />
+                          </div>
+                        </Col>
+                      </Row>
+                    ) : (
+                      <></>
+                    )}
+                  </>
                 ) : (
                   <Alert
                     type="warning"

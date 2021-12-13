@@ -6,11 +6,14 @@ import Countdown from "./Countdown";
 import "./index.less";
 import Schedule from "./Schedule";
 import Adsense from "../Adsense";
+import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 
 const Home: React.FC = () => {
   const title = `Kỳ thi Tốt nghiệp THPT ${new Date(
     config.THPT_DATE
   ).getFullYear()}`;
+
+  const { md } = useBreakpoint();
 
   return (
     <>
@@ -41,12 +44,16 @@ const Home: React.FC = () => {
             </Col>
           </Row>
         </div>
-        <div
-          className="ads"
-          style={{ marginTop: "20px", marginBottom: "20px" }}
-        >
-          <Adsense />
-        </div>
+        {md ? (
+          <div
+            className="ads"
+            style={{ marginTop: "20px", marginBottom: "20px" }}
+          >
+            <Adsense />
+          </div>
+        ) : (
+          <></>
+        )}
         {config.SCHEDULE ? (
           <Row style={{ marginTop: "20px" }}>
             <Col className="gutter-row" span={24}>

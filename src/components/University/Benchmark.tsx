@@ -4,6 +4,7 @@ import {
   BulbOutlined,
 } from "@ant-design/icons";
 import { Alert, Breadcrumb, Button, Spin, Table, Tabs, Typography } from "antd";
+import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import { Breakpoint } from "antd/lib/_util/responsiveObserve";
 import React from "react";
 import { Helmet } from "react-helmet-async";
@@ -23,6 +24,7 @@ const Benchmark: React.FC = () => {
   const { uniCode } = useParams<ParamTypes>();
   const { uni, state, loading, error } = useBenchmarkFetch(uniCode);
 
+  const { md } = useBreakpoint();
   // Columnns
   const columns = [
     {
@@ -137,12 +139,16 @@ const Benchmark: React.FC = () => {
       <div className="benchmark-wrapper">
         <div className="benchmark">{breadcrumb}</div>
         <h1>Điểm chuẩn - {uni.uniName}</h1>
-        <div
-          className="ads"
-          style={{ marginTop: "20px", marginBottom: "20px" }}
-        >
-          <Adsense />
-        </div>
+        {md ? (
+          <div
+            className="ads"
+            style={{ marginTop: "20px", marginBottom: "20px" }}
+          >
+            <Adsense />
+          </div>
+        ) : (
+          <></>
+        )}
         {loading ? (
           <Spin tip="Đang lấy dữ liệu điểm chuẩn..." className="spinner"></Spin>
         ) : state.length > 0 ? (

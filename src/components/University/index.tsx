@@ -1,5 +1,6 @@
 import { SearchOutlined } from "@ant-design/icons";
 import { Button, Input, Spin, Table, Typography } from "antd";
+import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, useRouteMatch, withRouter } from "react-router-dom";
@@ -21,6 +22,7 @@ const { Search } = Input;
 const Universities: React.FC = () => {
   const { state, loading, error } = useUniversityFetch();
 
+  const { md } = useBreakpoint();
   const [dataSource, setDataSource] = useState(state.universities);
   const [search, setSearch] = useState("");
 
@@ -111,9 +113,16 @@ const Universities: React.FC = () => {
             onSearch={searchUni}
           />
         </div>
-        <div className="ads" style={{ marginBottom: "20px" }}>
-          <Adsense />
-        </div>
+        {md ? (
+          <div
+            className="ads"
+            style={{ marginTop: "20px", marginBottom: "20px" }}
+          >
+            <Adsense />
+          </div>
+        ) : (
+          <></>
+        )}
         {loading ? (
           <Spin tip="Đang lấy danh sách..." className="spinner">
             {/* <></> */}
