@@ -2,11 +2,15 @@ import { useCallback, useEffect, useState } from "react";
 import api from "../api";
 import IBenchmark from "../interfaces/IBenchmark";
 import IUniversity from "../interfaces/IUniversity";
-import { getUniversity } from "../utils/dbUtils";
+import { getUniversities, getUniversity } from "../utils/dbUtils";
+import { useUniversityFetch } from "./useUniversityFetch";
 
 const initialState = [] as Array<IBenchmark>;
 
-export const useBenchmarkFetch = (uniCode: string) => {
+export const useBenchmarkFetch = (
+  uniCode: string,
+  universityLoading: boolean
+) => {
   const [uni, setUni] = useState<IUniversity>({} as IUniversity);
   const [state, setState] = useState(initialState);
   const [loading, setLoading] = useState(false);
@@ -32,8 +36,10 @@ export const useBenchmarkFetch = (uniCode: string) => {
   }, [uniCode]);
 
   useEffect(() => {
-    fetchBenchmark();
-  }, [fetchBenchmark]);
+    if (!universityLoading) {
+      fetchBenchmark();
+    }
+  }, [universityLoading, fetchBenchmark]);
 
   return { uni, state, loading, error };
 };
