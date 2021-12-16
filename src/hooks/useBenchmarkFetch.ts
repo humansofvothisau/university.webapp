@@ -1,25 +1,28 @@
 import { useCallback, useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import api from "../api";
 import IBenchmark from "../interfaces/IBenchmark";
 import IUniversity from "../interfaces/IUniversity";
 import { getUniversities, getUniversity } from "../utils/dbUtils";
-import { useUniversityFetch } from "./useUniversityFetch";
 
 const initialState = [] as Array<IBenchmark>;
 
-export const useBenchmarkFetch = (
-  uniCode: string,
-  universityLoading: boolean
-) => {
+export const useBenchmarkFetch = (uniCode: string) => {
   const [uni, setUni] = useState<IUniversity>({} as IUniversity);
   const [state, setState] = useState(initialState);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const history = useHistory();
 
   const fetchBenchmark = useCallback(async () => {
     try {
       setError("");
       setLoading(true);
+      const universitiesList = await getUniversities();
+      if (!universitiesList || universitiesList.length === 0) {
+        history.push(`/university?search=${uniCode}`);
+      }
+
       const uniData = await getUniversity(uniCode);
 
       if (uniData === undefined) {
@@ -36,10 +39,8 @@ export const useBenchmarkFetch = (
   }, [uniCode]);
 
   useEffect(() => {
-    if (!universityLoading) {
-      fetchBenchmark();
-    }
-  }, [universityLoading, fetchBenchmark]);
+    fetchBenchmark();
+  }, [fetchBenchmark]);
 
   return { uni, state, loading, error };
 };

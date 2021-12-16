@@ -1,13 +1,14 @@
 import { SearchOutlined } from "@ant-design/icons";
 import { Button, Input, Spin, Table, Typography } from "antd";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link, useRouteMatch, withRouter } from "react-router-dom";
+import { Link, useRouteMatch, withRouter, useLocation } from "react-router-dom";
 import config from "../../config";
 import { useUniversityFetch } from "../../hooks/useUniversityFetch";
 import Adsense from "../Adsense";
 import Error500 from "../Error/500";
+import { useQuery } from "../../hooks/useQuery";
 import Error from "../Error/Error";
 
 type UniKey = {
@@ -20,11 +21,12 @@ type UniKey = {
 const { Search } = Input;
 
 const Universities: React.FC = () => {
+  let query = useQuery();
   const { state, loading, error } = useUniversityFetch();
 
   const { md } = useBreakpoint();
   const [dataSource, setDataSource] = useState(state.universities);
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(query.get("search"));
 
   let { url } = useRouteMatch();
 
@@ -45,15 +47,24 @@ const Universities: React.FC = () => {
     },
   ];
 
-  const searchUni = (value: string) => {
-    setSearch(value);
-    const searchResult = state.universities.filter(
-      (uni) =>
-        uni.uniCode.toLowerCase().includes(value.toLowerCase()) ||
-        uni.uniName.toLowerCase().includes(value.toLowerCase())
-    );
-    setDataSource(searchResult);
-  };
+  const searchUni = useCallback(
+    (value: string) => {
+      setSearch(value);
+      const searchResult = state.universities.filter(
+        (uni) =>
+          uni.uniCode.toLowerCase().includes(value.toLowerCase()) ||
+          uni.uniName.toLowerCase().includes(value.toLowerCase())
+      );
+      setDataSource(searchResult);
+    },
+    [state.universities]
+  );
+
+  useEffect(() => {
+    if (search) {
+      searchUni(search);
+    }
+  }, [search, searchUni, query]);
 
   const displayData = search ? dataSource : state.universities;
 
@@ -111,6 +122,7 @@ const Universities: React.FC = () => {
               </Button>
             }
             onSearch={searchUni}
+            value={search ? search : ""}
           />
         </div>
         {md ? (

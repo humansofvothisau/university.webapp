@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router";
+import { Route, Switch } from "react-router-dom";
 import Error404 from "../components/Error/404";
 import Home from "../components/Home";
 import Thpt from "../components/THPT";
