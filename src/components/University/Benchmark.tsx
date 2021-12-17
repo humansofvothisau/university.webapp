@@ -21,6 +21,7 @@ import { Helmet } from "react-helmet-async";
 import { Link, useParams } from "react-router-dom";
 import config from "../../config";
 import { useBenchmarkFetch } from "../../hooks/useBenchmarkFetch";
+import { useQuery } from "../../hooks/useQuery";
 import IBenchmarkDetail from "../../interfaces/IBenchmarkDetail";
 import Adsense from "../Adsense";
 import Error404 from "../Error/404";
@@ -33,6 +34,7 @@ interface ParamTypes {
 
 const Benchmark: React.FC = () => {
   const { uniCode } = useParams<ParamTypes>();
+  let query = useQuery();
   const { uni, state, loading, error } = useBenchmarkFetch(uniCode);
 
   const { md } = useBreakpoint();
@@ -116,7 +118,13 @@ const Benchmark: React.FC = () => {
   const breadcrumb: React.ReactNode = (
     <Breadcrumb separator=">">
       <Breadcrumb.Item>
-        <Link to="/university">
+        <Link
+          to={`/university${
+            query.get("previous_search")
+              ? `?search=${query.get("previous_search")}`
+              : ""
+          }`}
+        >
           <BulbOutlined /> Danh sách các trường
         </Link>
       </Breadcrumb.Item>
@@ -131,7 +139,13 @@ const Benchmark: React.FC = () => {
   const noDataMessage: React.ReactNode = (
     <>
       <p>Trường {uni.uniName} hiện tại chưa công bố điểm chuẩn</p>
-      <Link to="/university">
+      <Link
+        to={`/university${
+          query.get("previous_search")
+            ? `?search=${query.get("previous_search")}`
+            : ""
+        }`}
+      >
         <Button type="dashed" icon={<ArrowLeftOutlined />}>
           Quay lại xem danh sách trường
         </Button>

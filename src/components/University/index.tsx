@@ -10,6 +10,7 @@ import Adsense from "../Adsense";
 import Error500 from "../Error/500";
 import { useQuery } from "../../hooks/useQuery";
 import Error from "../Error/Error";
+import { removeAccents } from "../../utils/stringUtils";
 
 type UniKey = {
   key: string;
@@ -42,18 +43,23 @@ const Universities: React.FC = () => {
       dataIndex: "uniName",
       key: "uniName",
       render: (text: string, record: UniKey) => (
-        <Link to={`${url}/${record.uniCode}`}>{text}</Link>
+        <Link to={`${url}/${record.uniCode}?previous_search=${search}`}>
+          {text}
+        </Link>
       ),
     },
   ];
 
   const searchUni = useCallback(
     (value: string) => {
+      value = removeAccents(value);
       setSearch(value);
       const searchResult = state.universities.filter(
         (uni) =>
-          uni.uniCode.toLowerCase().includes(value.toLowerCase()) ||
-          uni.uniName.toLowerCase().includes(value.toLowerCase())
+          removeAccents(uni.uniCode)
+            .toLowerCase()
+            .includes(value.toLowerCase()) ||
+          removeAccents(uni.uniName).toLowerCase().includes(value.toLowerCase())
       );
       setDataSource(searchResult);
     },
@@ -122,7 +128,7 @@ const Universities: React.FC = () => {
               </Button>
             }
             onSearch={searchUni}
-            value={search ? search : ""}
+            defaultValue={search ? search : ""}
           />
         </div>
         {md ? (

@@ -4,3 +4,11 @@ export const convertUnicode = (input: string) => {
     return String.fromCharCode(charcode);
   });
 };
+
+export const removeAccents = (input: string) => {
+  return input
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/đ/g, "d")
+    .replace(/Đ/g, "D");
+};
