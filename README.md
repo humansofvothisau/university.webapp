@@ -4,6 +4,7 @@
 This project is developed on behalf of [Humans Of Vo Thi Sau](https://humansofvothisau.com "Humans Of Vo Thi Sau"). Our aim is to create a website that provide the students information about the National High School Graduation Exam.
 The website is built on [React](https://reactjs.org/ "React") with [TypeScript](https://www.typescriptlang.org/ "TypeScript") and with the UI supported by [Ant Design](https://ant.design/ "Ant Design").
 ## Current Features
+See the latest release version and more details in release notes at [Release page](https://github.com/humansofvothisau/university.webapp/releases "Release page").
 With the current release, the students can:
 - Know how many days until the exam day.
 - Search for the benchmark for more than 500 universities and colleges in Vietnam.
