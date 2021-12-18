@@ -36,7 +36,7 @@ export const useBenchmarkFetch = (uniCode: string) => {
       setError(error);
     }
     setLoading(false);
-  }, [uniCode]);
+  }, [history, uniCode]);
 
   useEffect(() => {
     fetchBenchmark();

@@ -6,6 +6,9 @@ import IScheduleJson from "../interfaces/ISchedule";
 import IThptData from "../interfaces/IThptData";
 import IUniversity from "../interfaces/IUniversity";
 import IWpPost from "../interfaces/IWpPost";
+import quotes from "../json/quotes.json";
+import schedules from "../json/schedule.json";
+
 // const POST = {
 //   method: "POST",
 //   headers: {
@@ -77,19 +80,21 @@ const apiSettings = {
   },
 
   fetchQuote: async (): Promise<Array<IQuote>> => {
-    const endpoint: string = uniConfig.GET_QUOTE_URL;
-    var HttpReq = new XMLHttpRequest();
-    HttpReq.open("GET", endpoint, false);
-    HttpReq.send(null);
-    return JSON.parse(HttpReq.responseText);
+    // const endpoint: string = uniConfig.GET_QUOTE_URL;
+    // var HttpReq = new XMLHttpRequest();
+    // HttpReq.open("GET", endpoint, false);
+    // HttpReq.send(null);
+    // return JSON.parse(HttpReq.responseText);
+    return quotes;
   },
 
   fetchSchedule: async (): Promise<IScheduleJson> => {
-    const endpoint: string = uniConfig.GET_SCHEDULE_URL;
-    var HttpReq = new XMLHttpRequest();
-    HttpReq.open("GET", endpoint, false);
-    HttpReq.send(null);
-    return JSON.parse(HttpReq.responseText);
+    // const endpoint: string = uniConfig.GET_SCHEDULE_URL;
+    // var HttpReq = new XMLHttpRequest();
+    // HttpReq.open("GET", endpoint, false);
+    // HttpReq.send(null);
+    // return JSON.parse(HttpReq.responseText);
+    return schedules;
   },
 
   fetchWpPosts: async (): Promise<Array<IWpPost>> => {

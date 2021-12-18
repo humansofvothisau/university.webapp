@@ -3,7 +3,7 @@ import { Button, Input, Spin, Table, Typography } from "antd";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import React, { useCallback, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link, useRouteMatch, withRouter, useLocation } from "react-router-dom";
+import { Link, useRouteMatch, withRouter } from "react-router-dom";
 import config from "../../config";
 import { useUniversityFetch } from "../../hooks/useUniversityFetch";
 import Adsense from "../Adsense";
