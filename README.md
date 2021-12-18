@@ -1,7 +1,8 @@
 # HOV University
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB "React") ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white "React Router") ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white "TypeScript") ![Ant Design](https://img.shields.io/badge/Ant%20Design-1890FF?style=for-the-badge&logo=antdesign&logoColor=white "Ant Design")
 
-This project is developed on behalf of [Humans Of Vo Thi Sau](https://humansofvothisau.com "Humans Of Vo Thi Sau"). Our aim is to create a website that provide the students information about the National High School Graduation Exam.
+This project is developed on behalf of [Humans Of Vo Thi Sau](https://humansofvothisau.com "Humans Of Vo Thi Sau"). Our aim is to create a website that provide the students information about the National High School Graduation Exam. You can find the api repository [here](https://github.com/humansofvothisau/university.api "HOV University API") or see the latest version of website [here](https://university.humansofvothisau.com/ "here").
+
 The website is built on [React](https://reactjs.org/ "React") with [TypeScript](https://www.typescriptlang.org/ "TypeScript") and with the UI supported by [Ant Design](https://ant.design/ "Ant Design").
 ## Current Features
 See the latest release version and more details in release notes at [Release page](https://github.com/humansofvothisau/university.webapp/releases "Release page").
