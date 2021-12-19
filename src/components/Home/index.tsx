@@ -1,12 +1,15 @@
 import { Col, Row } from "antd";
-import React from "react";
+// import Schedule from "./Schedule";
+// import Adsense from "../Adsense";
+import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
+import React, { lazy } from "react";
 import { Helmet } from "react-helmet-async";
 import config from "../../config";
-import Countdown from "./Countdown";
+// import Countdown from "./Countdown";
 import "./index.less";
-import Schedule from "./Schedule";
-import Adsense from "../Adsense";
-import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
+const Countdown = lazy(() => import("./Countdown"));
+const Schedule = lazy(() => import("./Schedule"));
+const Adsense = lazy(() => import("../Adsense"));
 
 const Home: React.FC = () => {
   const title = `Kỳ thi Tốt nghiệp THPT ${new Date(

@@ -1,19 +1,19 @@
 import { RedoOutlined } from "@ant-design/icons";
 import { Alert, Col, List, Row, Spin, Typography } from "antd";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
-import React from "react";
+import React, { lazy } from "react";
 import { Helmet } from "react-helmet-async";
 import { withRouter } from "react-router-dom";
 import config from "../../config";
 import { useThptFetch } from "../../hooks/useThptFetch";
-import Adsense from "../Adsense";
+// import Adsense from "../Adsense";
 import Error404 from "../Error/404";
 import Error500 from "../Error/500";
 import Error from "../Error/Error";
 import FormSBD from "./FormSBD";
 import FormTotNghiep from "./FormTotNghiep";
 import "./index.less";
-
+const Adsense = lazy(() => import("../Adsense"));
 type THPTDataDisplay = {
   subject: string;
   point?: number;

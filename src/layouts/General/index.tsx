@@ -1,6 +1,6 @@
-import { Affix, BackTop, notification } from "antd";
+import { Affix, BackTop, notification, Spin } from "antd";
 import Layout, { Content } from "antd/lib/layout/layout";
-import React, { useEffect } from "react";
+import React, { useEffect, Suspense } from "react";
 import { withRouter } from "react-router-dom";
 import Routes from "../Routes";
 import BottomFooter from "./BottomFooter";
@@ -38,7 +38,18 @@ const General: React.FC = () => {
         <div className="posts-marquee" style={{ marginBottom: "20px" }}>
           <WpPosts />
         </div>
-        <Routes />
+        <Suspense
+          fallback={
+            <Spin
+              tip="Đang tải... Xin vui lòng chờ trong giây lát"
+              className="spinner"
+            >
+              {/* <></> */}
+            </Spin>
+          }
+        >
+          <Routes />
+        </Suspense>
       </Content>
 
       <BottomFooter />

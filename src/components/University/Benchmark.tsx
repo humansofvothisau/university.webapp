@@ -16,17 +16,18 @@ import {
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
 import { ColumnsType } from "antd/lib/table";
 import { Breakpoint } from "antd/lib/_util/responsiveObserve";
-import React, { useEffect } from "react";
+import React, { lazy, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, useParams } from "react-router-dom";
 import config from "../../config";
 import { useBenchmarkFetch } from "../../hooks/useBenchmarkFetch";
 import { useQuery } from "../../hooks/useQuery";
 import IBenchmarkDetail from "../../interfaces/IBenchmarkDetail";
-import Adsense from "../Adsense";
+// import Adsense from "../Adsense";
 import Error404 from "../Error/404";
 import Error500 from "../Error/500";
 import Error from "../Error/Error";
+const Adsense = lazy(() => import("../Adsense"));
 
 interface ParamTypes {
   uniCode: string;

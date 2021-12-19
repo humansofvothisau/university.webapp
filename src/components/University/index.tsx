@@ -1,16 +1,17 @@
 import { SearchOutlined } from "@ant-design/icons";
 import { Button, Input, Spin, Table, Typography } from "antd";
 import useBreakpoint from "antd/lib/grid/hooks/useBreakpoint";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { lazy, useCallback, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link, useRouteMatch, withRouter } from "react-router-dom";
 import config from "../../config";
-import { useUniversityFetch } from "../../hooks/useUniversityFetch";
-import Adsense from "../Adsense";
-import Error500 from "../Error/500";
 import { useQuery } from "../../hooks/useQuery";
-import Error from "../Error/Error";
+import { useUniversityFetch } from "../../hooks/useUniversityFetch";
 import { removeAccents } from "../../utils/stringUtils";
+// import Adsense from "../Adsense";
+import Error500 from "../Error/500";
+import Error from "../Error/Error";
+const Adsense = lazy(() => import("../Adsense"));
 
 type UniKey = {
   key: string;
