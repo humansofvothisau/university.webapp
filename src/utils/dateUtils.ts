@@ -8,7 +8,7 @@ export const convertTimeString = (date: Date) => {
   return `${getZeroDisplay(date.getHours())}:${getZeroDisplay(
     date.getMinutes()
   )} ${getZeroDisplay(date.getDate())}/${getZeroDisplay(
-    date.getMonth()
+    date.getMonth() + 1
   )}/${date.getFullYear()}`;
 };
 
